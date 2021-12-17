@@ -69,12 +69,13 @@ const NewStudentView = (props) => {
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="#9ebe35" >
             Campus Manager
-            <Link className={classes.links} to={'/'} >
+          </Typography>
+
+          <Link className={classes.links} to={'/'} >
               <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
                 Home
               </Button>
-            </Link>
-          </Typography>
+          </Link>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
