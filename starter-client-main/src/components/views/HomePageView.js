@@ -14,9 +14,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     textAlign: 'left',
     fontType: 'bold',
-    fontFamily: 'Courier, sans-serif', 
+    fontFamily: 'Georgia, serif', 
     fontSize: '35px', 
-    color: '#CDDC39'
+    color: '#9ebe35'
   },
   appBar:{
     backgroundColor: '#11153e',
@@ -25,7 +25,8 @@ const useStyles = makeStyles(theme => ({
   greeting:{
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#f6f6f6',
+    fontFamily: 'Georgia, serif', 
     width: "50%",
     margin: "auto",
   },
@@ -41,8 +42,8 @@ const HomePageView = () => {
     <div className={classes.root}>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="inherit" >
-            CRUD App
+          <Typography variant="h6" className={classes.title} color="#9ebe35" >
+            Campus Manager
           </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
@@ -58,7 +59,7 @@ const HomePageView = () => {
           </Link>
         </Toolbar>
       </AppBar>
-      
+      <center><img src="https://media.istockphoto.com/vectors/young-people-group-reading-books-study-learning-knowledge-and-vector-vector-id1206750602?k=20&m=1206750602&s=612x612&w=0&h=nOBI0vsqpURdDZ1dmcn9bys2Z_5gaIuAl1pfFujZiMk=" alt="pic" style={{marginTop:"30px", height:"auto", width:"400px"}}/></center>
       <div className={classes.greeting}><h1>Home Page</h1></div>
     </div>
   );    
