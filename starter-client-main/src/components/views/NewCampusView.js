@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+
+import { Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -59,23 +59,23 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-const NewStudentView = (props) => {
+const NewCampusView = (props) => {
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="#9ebe35" >
             Campus Manager
-          </Typography>
-
-          <Link className={classes.links} to={'/'} >
+            <Link className={classes.links} to={'/'} >
               <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
                 Home
               </Button>
-          </Link>
+            </Link>
+          </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
@@ -90,20 +90,21 @@ const NewStudentView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
+      
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Student
+            New Campus
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-          <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
-          <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Name: </label>
+          <input type="text" name="name" onChange ={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
-          <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Address: </label>
+          <input type="text" name="address" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
@@ -112,15 +113,15 @@ const NewStudentView = (props) => {
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
-          <input type="text" name="email" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Description: </label>
+          <input type="text" name="desc" onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
+          {/* <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
           <input type="double" name="gpa" onChange={(e) => handleChange(e)} />
           <br/>
-          <br/>
+          <br/> */}
 
           <Button variant="contained" color="primary" type="submit">
             Submit
@@ -134,4 +135,4 @@ const NewStudentView = (props) => {
   )
 }
 
-export default NewStudentView;
+export default NewCampusView;
