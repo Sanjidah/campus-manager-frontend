@@ -1,5 +1,8 @@
+import PropTypes from "prop-types";
 import Button from '@material-ui/core/Button';
+// import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+// import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
@@ -59,17 +62,8 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       todos: todosData,
-//     };
-//     this.handleChange = this.handleChange.bind(this)//<-- This is right
-// }
-
 const NewCampusView = (props) => {
-  const {handleChange, handleSubmit } = props;
+  // const {handleChange, handleSubmit } = props;
 
   const classes = useStyles();
 
@@ -108,42 +102,79 @@ const NewCampusView = (props) => {
             Add Campus
           </Typography>
         </div>
-        <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
+        
+
+        <form style={{textAlign: 'center'}} noValidate autoComplete="off" onSubmit={props.handleSubmit}>
+
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Name: </label>
-          <input type="text" name="name" onChange ={(e) => handleChange(e)} />
+          <input type="text" name="Campus Name" onInput={ e => props.setCampusName(e.target.value)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Address: </label>
-          <input type="text" name="address" onChange={(e) => handleChange(e)} />
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Address: </label>
+          <input type="text" name="Campus Address" onInput={ e => props.setCampusAddress(e.target.value)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>campusId: </label>
-          <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Description: </label>
+          <input type="text" name="Campus Description" onInput={ e => props.setCampusDescription(e.target.value)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Description: </label>
-          <input type="text" name="desc" onChange={(e) => handleChange(e)} />
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Image URL: </label>
+          <input type="text" name="Campus Image URL" onInput={ e => props.setCampusImageUrl(e.target.value)} />
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Image URL: </label>
-          <input type="text" name="img" onChange={(e) => handleChange(e)} />
-          <br/>
-          <br/>
-
-          <Button variant="contained" color="primary" type="submit">
-            Submit
+          <Button type="submit" variant="contained" color="primary">
+              Submit
           </Button>
           <br/>
           <br/>
+          
         </form>
+
+
+        
+        {/* <form className={classes.root} noValidate autoComplete="off" onSubmit={props.handleSubmit}>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Name" onInput={ e => props.setCampusName(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Address" onInput={ e => props.setCampusAddress(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Description" onInput={ e => props.setCampusDescription(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <TextField id="standard-basic" label="Campus Image URL" onInput={ e => props.setCampusImageUrl(e.target.value)}/>
+        </Grid>
+
+        <Grid container justify="center">
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
+        </Grid>
+        
+        </form> */}
+
         </div>
       </div>
     
   )
 }
+
+NewCampusView.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  setCampusName: PropTypes.func.isRequired,
+  setCampusAddress: PropTypes.func.isRequired,
+  // setCampusId: PropTypes.func.isRequired,
+  setCampusDescription: PropTypes.func.isRequired,
+  setCampusImageUrl: PropTypes.func.isRequired,
+}; 
 
 export default NewCampusView;

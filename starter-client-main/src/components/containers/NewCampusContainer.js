@@ -10,19 +10,29 @@ class NewCampusContainer extends Component {
         this.state = {
             campusName: "",
             campusAddress: "",
-            campusImageURL: "",
+            // campusId: null, 
             campusDescription: "",
+            campusImageURL: ""
         };
     }
+
+    // handleChange = event => {
+    //     this.setState({
+    //       [event.target.name]: event.target.value
+    //     });
+    //   }
 
     handleSubmit = async (e) => {
         e.preventDefault();
         const campus = {
-            name: this.state.campusName,
-            address: this.state.campusAddress,
-            imageUrl: this.state.campusImageURL,
-            description: this.state.campusDescription,
+            campusName: this.state.campusName,
+            campusAddress: this.state.campusAddress,
+            // campusId: this.state.campusId,
+            campusDescription: this.state.campusDescription,
+            campusImageURL: this.state.campusImageURL
         };
+
+        // let newCampus = await this.props.addCampus(campus);
 
         let url = window.location.href;
         url = url.substring(0, url.lastIndexOf("/"));
@@ -37,6 +47,10 @@ class NewCampusContainer extends Component {
     setCampusAddress = (newCampusAddress) => {
         this.setState({ campusAddress: newCampusAddress });
     };
+
+    // setCampusId = (newCampusId) => {
+    //     this.setState({ campusId: newCampusId });
+    // };
 
     setCampusDescription = (newCampusDescription) => {
         this.setState({ campusDescription: newCampusDescription });
@@ -55,9 +69,11 @@ class NewCampusContainer extends Component {
         return (
         <NewCampusView
             allCampuses={this.props.allCampuses}
+            // handleChange = {this.handleChange} 
             handleSubmit={this.handleSubmit}
             setCampusName={this.setCampusName}
             setCampusAddress={this.setCampusAddress}
+            // setCampusId={this.setCampusId}
             setCampusDescription={this.setCampusDescription}
             setCampusImageUrl={this.setCampusImageUrl}
         />
