@@ -59,8 +59,18 @@ const useStyles = makeStyles( () => ({
   
 }));
 
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       todos: todosData,
+//     };
+//     this.handleChange = this.handleChange.bind(this)//<-- This is right
+// }
+
 const NewCampusView = (props) => {
   const {handleChange, handleSubmit } = props;
+
   const classes = useStyles();
 
   return (
@@ -68,24 +78,25 @@ const NewCampusView = (props) => {
 
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35" >
+        <Typography variant="h6" className={classes.title} color="#9ebe35" >
             Campus Manager
-            <Link className={classes.links} to={'/'} >
+          </Typography>
+
+          <Link className={classes.links} to={'/'} >
               <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
                 Home
               </Button>
-            </Link>
-          </Typography>
+          </Link>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              All Campuses
+              Campuses
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/students'} >
             <Button variant="contained" color="primary">
-              All Students
+              Students
             </Button>
           </Link>
         </Toolbar>
@@ -94,7 +105,7 @@ const NewCampusView = (props) => {
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Campus
+            Add Campus
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
@@ -118,10 +129,10 @@ const NewCampusView = (props) => {
           <br/>
           <br/>
 
-          {/* <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
-          <input type="double" name="gpa" onChange={(e) => handleChange(e)} />
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Image URL: </label>
+          <input type="text" name="img" onChange={(e) => handleChange(e)} />
           <br/>
-          <br/> */}
+          <br/>
 
           <Button variant="contained" color="primary" type="submit">
             Submit

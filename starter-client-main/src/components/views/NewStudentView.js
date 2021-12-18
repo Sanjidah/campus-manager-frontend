@@ -69,13 +69,12 @@ const NewStudentView = (props) => {
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="#9ebe35" >
             Campus Manager
-          </Typography>
-
-          <Link className={classes.links} to={'/'} >
+            <Link className={classes.links} to={'/'} >
               <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
                 Home
               </Button>
-          </Link>
+            </Link>
+          </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
@@ -93,7 +92,7 @@ const NewStudentView = (props) => {
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Student
+            Add Student
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
