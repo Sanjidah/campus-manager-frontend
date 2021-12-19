@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import NewStudentContainer from "../containers/NewStudentContainer";
+
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
@@ -59,7 +59,8 @@ const useStyles = makeStyles( () => ({
   
 }));
 
-const NewStudentView = (props) => {
+const EditStudentView = (props) => {
+    console.log(props)
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
@@ -90,35 +91,36 @@ const NewStudentView = (props) => {
           </Link>
         </Toolbar>
       </AppBar>
+
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            Add Student
+            Edit Student
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
-          <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
+          <input type="text" name="firstname" onChange ={(e) => handleChange(e)} defaultValue={props.student.firstname}/>
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
-          <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
+          <input type="text" name="lastname" onChange={(e) => handleChange(e)} defaultValue={props.student.lastname}/>
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>campusId: </label>
-          <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
+          <input type="text" name="campusId" onChange={(e) => handleChange(e)} defaultValue={props.student.campusId}/>
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
-          <input type="text" name="email" onChange={(e) => handleChange(e)} />
+          <input type="text" name="email" onChange={(e) => handleChange(e)} defaultValue={props.student.email}/>
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>GPA: </label>
-          <input type="double" name="gpa" onChange={(e) => handleChange(e)} />
+          <input type="double" name="gpa" onChange={(e) => handleChange(e)} defaultValue={props.student.gpa}/>
           <br/>
           <br/>
 
@@ -134,4 +136,4 @@ const NewStudentView = (props) => {
   )
 }
 
-export default NewStudentView;
+export default EditStudentView;
