@@ -34,24 +34,29 @@ const useStyles = makeStyles(theme => ({
   },
   links:{
     textDecoration: 'none',
+  },
+  image:{  
+    width: '200px',
+    height: "auto",
   }
-
 }));
 
 const AllCampusesView = (props) => {
+  const {campuses, deleteCampus} = props;
   const classes = useStyles();
   if (!props.allCampuses.length) {
     return <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35" >
-            Campus Manager
+        <Typography variant="h6" className={classes.title} color="#9ebe35" >
+              Campus Manager
+        </Typography>
+  
             <Link className={classes.links} to={'/'} >
-              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
-              </Button>
+                <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+                  Home
+                </Button>
             </Link>
-          </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
@@ -68,7 +73,7 @@ const AllCampusesView = (props) => {
       </AppBar>
       
       <p>There are no campuses.</p>
-      <Link to={`/addcampus`}>
+      <Link to={`/newcampus`}>
         <button>Add New Campus</button>
       </Link>
       </div>;
@@ -107,12 +112,17 @@ const AllCampusesView = (props) => {
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
+          <img src={campus.imageUrl} alt="Campus" className={classes.image}/>
           <p>{campus.description}</p>
+          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
         </div>
       ))}
-      <Link to={`/addcampus`}>
-        <button>Add New Campus</button>
-      </Link>
+      <p>
+        <Link to={`/newcampus`}>
+          <button>Add New Campus</button>
+        </Link>
+      </p>
+
     </div>
   );
 };

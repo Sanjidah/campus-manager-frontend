@@ -67,7 +67,7 @@ const NewStudentView = (props) => {
     <div className={classes.root}>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35" >
+        <Typography variant="h6" className={classes.title} color="#9ebe35" >
             Campus Manager
           </Typography>
 
@@ -93,7 +93,7 @@ const NewStudentView = (props) => {
       <div className={classes.formContainer}>
         <div className={classes.formTitle}>
           <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
-            New Student
+            Add Student
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
