@@ -32,13 +32,16 @@ const useStyles = makeStyles(theme => ({
   },
   links:{
     textDecoration: 'none',
+  },
+  image:{  
+    width: '200px',
+    height: "auto",
   }
-
 }));
 
 const StudentView = (props) => {
   const classes = useStyles();
-  const { student } = props;
+  const { student, deleteStudent} = props;
   return (
     <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
@@ -70,14 +73,20 @@ const StudentView = (props) => {
 
 
       <h1>{student.firstname + " " + student.lastname}</h1>
+      <img src={student.imageUrl} alt="Student profile" className={classes.image}/>
       <p>
         <Link to={`/editstudent/` + student.id}>
           <button>Edit Student</button>
         </Link>
-        </p>
-      <h3>{student.campus.name}</h3>
+      </p>
+      <Link to={`/students`}>
+      <button onClick={() => deleteStudent(student.id)}>Delete Student</button>
+      </Link>
+      <h3> <Link to={`/campus/${student.campus.id}`}>
+        {student.campus.name}
+      </Link> </h3>
       <h3>{student.email}</h3>
-      <h3>{student.gpa}</h3>
+      <h3>GPA: {student.gpa}</h3>
     </div>
   );
 
