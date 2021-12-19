@@ -39,6 +39,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AllCampusesView = (props) => {
+  const {campuses, deleteCampus} = props;
   const classes = useStyles();
   if (!props.allCampuses.length) {
     return <div>
@@ -102,7 +103,21 @@ const AllCampusesView = (props) => {
         </Toolbar>
       </AppBar>
 
+
       {props.allCampuses.map((campus) => (
+        <div key={campus.id}>
+          <Link to={`/campus/${campus.id}`}>
+            <h1>{campus.name}</h1>
+          </Link>
+          <p>{campus.description}</p>
+          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+        </div>
+      ))}
+      <Link to={`/newcampus`}>
+        <button>Add New Campus</button>
+      </Link>
+
+      {/* {props.allCampuses.map((campus) => (
         <div key={campus.id}>
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
@@ -112,7 +127,7 @@ const AllCampusesView = (props) => {
       ))}
       <Link to={`/newcampus`}>
         <button>Add New Campus</button>
-      </Link>
+      </Link> */}
     </div>
   );
 };

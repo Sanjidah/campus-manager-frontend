@@ -38,7 +38,8 @@ const useStyles = makeStyles(theme => ({
 
 const CampusView = (props) => {
   const classes = useStyles();
-  const {campus} = props;
+  const {campus, deleteCampus, deleteStudent} = props;
+  
   return (
     <div>      
       <AppBar position="static" elevation={0} className={classes.appBar}>
@@ -71,13 +72,34 @@ const CampusView = (props) => {
       <h1>{campus.name}</h1>
       <p>{campus.description}</p>
       <ul>
+
+      {/* <br/>
+      <Link to={`/campuses`}>
+      <button onClick={() => deleteCampus(campus.id)}>Delete Campus 1</button>
+      </Link>
+      <br/> */}
+
+
       {campus.students.map( student => {
         let name = student.firstname + " " + student.lastname;
         return (
-          <li key={student.id}>{name}</li>
+          <li key={student.id}>{name}
+          <Link to={`/student/${student.id}`}>
+          {name}
+          </Link>
+          {/* <br/>
+          <Link to={`/students`}>
+          <button onClick={() => deleteStudent(student.id)}>Delete Student</button>
+          </Link> */}
+          </li>
         );
       })}
       </ul>
+      <br/>
+      <Link to={`/campuses`}>
+      <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+      </Link>
+      <br/>
     </div>
   );
 
