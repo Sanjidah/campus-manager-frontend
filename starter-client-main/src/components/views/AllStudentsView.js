@@ -32,6 +32,10 @@ const useStyles = makeStyles(theme => ({
   },
   links:{
     textDecoration: 'none',
+  },
+  image:{  
+    width: '200px',
+    height: 'auto'
   }
 }));
 
@@ -110,7 +114,8 @@ const AllStudentsView = (props) => {
           <Link to={`/student/${student.id}`}>
             <h1>{name}</h1>
           </Link>
-          <button onClick={() => deleteStudent(student.id)}>Delete</button>
+          <img src={student.imageUrl} alt="Student profile" className={classes.image}/>
+          <p> <button onClick={() => deleteStudent(student.id)}>Delete</button> </p>
           </div>
         );
       }
