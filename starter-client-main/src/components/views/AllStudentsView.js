@@ -33,7 +33,6 @@ const useStyles = makeStyles(theme => ({
   links:{
     textDecoration: 'none',
   }
-
 }));
 
 const AllStudentsView = (props) => {
@@ -44,14 +43,15 @@ const AllStudentsView = (props) => {
     <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35" >
-            Campus Manager
+        <Typography variant="h6" className={classes.title} color="#9ebe35" >
+              Campus Manager
+        </Typography>
+  
             <Link className={classes.links} to={'/'} >
-              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
-              </Button>
+                <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+                  Home
+                </Button>
             </Link>
-          </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
@@ -68,7 +68,7 @@ const AllStudentsView = (props) => {
       </AppBar>
 
       <p>There are no students.</p>
-      <Link to={`student/new`}>
+      <Link to={`/newstudent/`}>
         <button>Add New Student</button>
       </Link>
     </div>

@@ -34,8 +34,11 @@ const useStyles = makeStyles(theme => ({
   },
   links:{
     textDecoration: 'none',
+  },
+  image:{  
+    width: '200px',
+    height: "auto",
   }
-
 }));
 
 const AllCampusesView = (props) => {
@@ -45,14 +48,15 @@ const AllCampusesView = (props) => {
     return <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35" >
-            Campus Manager
+        <Typography variant="h6" className={classes.title} color="#9ebe35" >
+              Campus Manager
+        </Typography>
+  
             <Link className={classes.links} to={'/'} >
-              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
-              </Button>
+                <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+                  Home
+                </Button>
             </Link>
-          </Typography>
 
           <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
@@ -103,31 +107,22 @@ const AllCampusesView = (props) => {
         </Toolbar>
       </AppBar>
 
-
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
           <Link to={`/campus/${campus.id}`}>
             <h1>{campus.name}</h1>
           </Link>
+          <img src={campus.imageUrl} alt="Campus" className={classes.image}/>
           <p>{campus.description}</p>
           <button onClick={() => deleteCampus(campus.id)}>Delete</button>
         </div>
       ))}
-      <Link to={`/newcampus`}>
-        <button>Add New Campus</button>
-      </Link>
+      <p>
+        <Link to={`/newcampus`}>
+          <button>Add New Campus</button>
+        </Link>
+      </p>
 
-      {/* {props.allCampuses.map((campus) => (
-        <div key={campus.id}>
-          <Link to={`/campus/${campus.id}`}>
-            <h1>{campus.name}</h1>
-          </Link>
-          <p>{campus.description}</p>
-        </div>
-      ))}
-      <Link to={`/newcampus`}>
-        <button>Add New Campus</button>
-      </Link> */}
     </div>
   );
 };
