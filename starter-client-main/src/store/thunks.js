@@ -35,6 +35,7 @@ export const addCampusThunk = (campus) => async (dispatch) => {
     console.log(campus)
     let res = await axios.post(`/api/campuses`, campus);
     dispatch(ac.addCampus(res.data));
+    return res.data;
   } catch(err) {
     console.error(err);
   }
@@ -46,6 +47,17 @@ export const deleteCampusThunk = id => async dispatch => {
     await axios.delete(`/api/campuses/${id}`);
     //delete succesful so change state with dispatch
     dispatch(ac.deleteCampus(id));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
+// Edit Campus
+export const editCampusThunk = campus => async dispatch => {
+  try {
+    let updatedCampus = await axios.put(`/api/campuses/${campus.id}`, campus);
+    dispatch(ac.editCampus(updatedCampus));
+    return updatedCampus.data;
   } catch(err) {
     console.error(err);
   }
@@ -85,6 +97,7 @@ export const editStudentThunk = student => async dispatch => {
   try {
     let updatedStudent = await axios.put(`/api/students/${student.id}`, student);
     dispatch(ac.editStudent(updatedStudent));
+    return updatedStudent.data;
   } catch(err) {
     console.error(err);
   }

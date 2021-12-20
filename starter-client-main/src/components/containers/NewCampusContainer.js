@@ -12,7 +12,7 @@ class NewCampusContainer extends Component {
             name: "",
             address: "",
             description: "",
-            imageURL: "",
+            imageUrl: "",
             redirect: false, 
             redirectId: null
         };
@@ -30,7 +30,7 @@ class NewCampusContainer extends Component {
             name: this.state.name,
             address: this.state.address,
             description: this.state.description,
-            imageURL: this.state.imageURL,
+            imageUrl: this.state.imageUrl,
         };
 
         let newCampus = await this.props.addCampus(campus);
@@ -44,7 +44,7 @@ class NewCampusContainer extends Component {
             name: "", 
             address: "", 
             description: "", 
-            imageURL: "",
+            imageUrl: "",
             redirect: true, 
             redirectId: this.state.name
           });
