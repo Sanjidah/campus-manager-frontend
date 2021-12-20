@@ -85,6 +85,7 @@ export const editStudentThunk = student => async dispatch => {
   try {
     let updatedStudent = await axios.put(`/api/students/${student.id}`, student);
     dispatch(ac.editStudent(updatedStudent));
+    return updatedStudent.data;
   } catch(err) {
     console.error(err);
   }
