@@ -1,4 +1,3 @@
-
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -7,11 +6,7 @@ import NewStudentView from '../views/NewStudentView';
 import { addStudentThunk } from '../../store/thunks';
 
 
-import NewStudentView from "../views/NewStudentView";
-import { addStudentThunk } from "../../store/thunks";
-
 class NewStudentContainer extends Component {
-
     constructor(props){
         super(props);
         this.state = {
@@ -45,11 +40,16 @@ class NewStudentContainer extends Component {
         let newStudent = await this.props.addStudent(student);
         //console.log("student id: "+ newStudent.id)
 
-
-  componentWillUnmount() {
-    this.setState({ redirect: false, redirectId: null });
-  }
-
+        this.setState({
+          firstname: "", 
+          lastname: "", 
+          campusId: null, 
+          email: "",
+          gpa: 0,
+          redirect: true, 
+          redirectId: newStudent.id
+        });
+    }
 
     componentWillUnmount() {
         this.setState({redirect: false, redirectId: null});
@@ -65,21 +65,13 @@ class NewStudentContainer extends Component {
             handleSubmit={this.handleSubmit}      
           />
         );
-
     }
-    return (
-      <NewStudentView
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
-    );
-  }
 }
 
 const mapDispatch = (dispatch) => {
-  return {
-    addStudent: (student) => dispatch(addStudentThunk(student)),
-  };
-};
+    return({
+        addStudent: (student) => dispatch(addStudentThunk(student)),
+    })
+}
 
 export default connect(null, mapDispatch)(NewStudentContainer);
