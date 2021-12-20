@@ -4,7 +4,6 @@ import { Redirect } from "react-router-dom";
 
 import EditStudentView from "../views/EditStudentView";
 import { editStudentThunk } from "../../store/thunks";
-
 import { fetchStudentThunk } from "../../store/thunks";
 import { editStudent } from "../../store/actions/actionCreators";
 
@@ -25,16 +24,6 @@ class EditStudentContainer extends Component {
   componentDidMount() {
     //getting student ID from url
     this.props.fetchStudent(this.props.match.params.id);
-
-    this.setState({
-      firstname: this.props.student.firstname,
-      lastname: this.props.student.lastname,
-      email: this.props.student.email,
-      gpa: this.props.student.gpa,
-      campusId: this.props.student.campusId,
-      redirect: false,
-      redirectId: null,
-    });
   }
 
   handleChange = (event) => {
