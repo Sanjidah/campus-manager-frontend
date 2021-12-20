@@ -10,11 +10,7 @@ class StudentContainer extends Component {
   }
 
   render() {
-    return (
-      <StudentView 
-        student={this.props.student}
-      />
-    );
+    return <StudentView student={this.props.student} />;
   }
 }
 

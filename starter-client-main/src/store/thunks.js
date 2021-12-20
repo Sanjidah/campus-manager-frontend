@@ -25,6 +25,7 @@ export const fetchCampusThunk = (id) => async (dispatch) => {
   try {
     let res = await axios.get(`/api/campuses/${id}`);
     dispatch(ac.fetchCampus(res.data));
+    return res.data;
   } catch(err) {
     console.error(err);
   }
