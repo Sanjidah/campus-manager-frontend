@@ -4,17 +4,23 @@ import { Redirect } from 'react-router-dom';
 
 import EditStudentView from '../views/EditStudentView';
 import { editStudentThunk } from '../../store/thunks';
+<<<<<<< HEAD
+import { fetchStudentThunk } from "../../store/thunks";
+import { editStudent } from '../../store/actions/actionCreators';
+
+=======
 import { fetchStudentThunk } from "../../store/thunks"
+>>>>>>> f91b8704885e635718d5df7a437602acd90d3fd1
 
 class EditStudentContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
-          firstname: "", 
-          lastname: "", 
-          email: "",
-          gpa: 0,
-          campusId: null, 
+          firstname: this.props.student.firstname, 
+          lastname: this.props.student.lastname, 
+          email: this.props.student.email,
+          gpa: this.props.student.gpa,
+          campusId: this.props.student.campusId, 
           redirect: false, 
           redirectId: null
         };
@@ -49,21 +55,29 @@ class EditStudentContainer extends Component {
             lastname: this.state.lastname,
             campusId: this.state.campusId,
             email: this.state.email,
-            gpa: this.state.gpa
+            gpa: this.state.gpa,
+            id: this.props.student.id
         };
-        console.log(this.props)
+
+        console.log("student: ")
+        console.log(student)
+
+        console.log("this.props.student: ")
+        console.log(this.props.student)
 
         let newStudent = await this.props.editStudent(student);
+
+        console.log("newStudent: ")
         console.log(newStudent)
 
         this.setState({
           firstname: "", 
           lastname: "", 
-          campusId: null, 
           email: "",
           gpa: 0,
+          campusId: null, 
           redirect: true, 
-          redirectId: this.props.match.params.id
+            redirectId: newStudent.id
         });
     }
 
@@ -96,7 +110,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return({
-        addStudent: (student) => dispatch(editStudentThunk(student)),
         fetchStudent: (id) => dispatch(fetchStudentThunk(id)),
         editStudent: (student) => dispatch(editStudentThunk(student))
     })
