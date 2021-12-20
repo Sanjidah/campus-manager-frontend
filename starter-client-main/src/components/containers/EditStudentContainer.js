@@ -2,29 +2,12 @@ import { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import EditStudentView from "../views/EditStudentView";
-import { editStudentThunk } from "../../store/thunks";
+
+import EditStudentView from '../views/EditStudentView';
+import { editStudentThunk } from '../../store/thunks';
 import { fetchStudentThunk } from "../../store/thunks";
-import { editStudent } from "../../store/actions/actionCreators";
+import { editStudent } from '../../store/actions/actionCreators';
 
-class EditStudentContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstname: this.props.student.firstname,
-      lastname: this.props.student.lastname,
-      email: this.props.student.email,
-      gpa: this.props.student.gpa,
-      campusId: this.props.student.campusId,
-      redirect: false,
-      redirectId: null,
-    };
-  }
-
-  componentDidMount() {
-    //getting student ID from url
-    this.props.fetchStudent(this.props.match.params.id);
-  }
 
   handleChange = (event) => {
     this.setState({
@@ -32,23 +15,32 @@ class EditStudentContainer extends Component {
     });
   };
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
 
-    let student = {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      campusId: this.state.campusId,
-      email: this.state.email,
-      gpa: this.state.gpa,
-      id: this.props.student.id,
-    };
-    console.log(this.state.campusId);
-    console.log("student: ");
-    console.log(student);
+class EditStudentContainer extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+          firstname: this.props.student.firstname, 
+          lastname: this.props.student.lastname, 
+          email: this.props.student.email,
+          gpa: this.props.student.gpa,
+          campusId: this.props.student.campusId, 
+          redirect: false, 
+          redirectId: null
+        };
+    }
 
-    console.log("this.props.student: ");
-    console.log(this.props.student);
+    componentDidMount() {
+        //getting student ID from url
+        this.props.fetchStudent(this.props.match.params.id);
+      }
+
+    handleChange = event => {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+
 
     if (student.campusId === "") {
       student.campusId = null;

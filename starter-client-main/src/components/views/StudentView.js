@@ -30,9 +30,12 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
     margin: "auto",
   },
-  links: {
-    textDecoration: "none",
-  },
+
+  links:{
+    textDecoration: 'none',
+  }
+
+
 }));
 
 const StudentView = (props) => {
@@ -79,6 +82,7 @@ const StudentView = (props) => {
         <Link to={`/editstudent/` + student.id}>
           <button>Edit Student</button>
         </Link>
+
       </p>
       <div>
         {student.campus ? (
@@ -93,6 +97,7 @@ const StudentView = (props) => {
           <h3>Student is currently not enrolled in a campus.</h3>
         )}
       </div>
+
     </div>
   );
 };

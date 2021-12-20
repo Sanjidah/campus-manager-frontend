@@ -43,7 +43,9 @@ const CampusView = (props) => {
   const classes = useStyles();
   const { campus, deleteCampus, deleteStudent } = props;
 
-  if (!campus.students) {
+
+  if (!campus.students.length){
+
     return (
       <div>
         <AppBar position="static" elevation={0} className={classes.appBar}>

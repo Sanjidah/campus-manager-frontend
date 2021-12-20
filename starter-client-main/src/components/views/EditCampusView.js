@@ -111,6 +111,7 @@ const EditCampusView = (props) => {
             Edit Campus
           </Typography>
         </div>
+
         <form style={{ textAlign: "center" }} onSubmit={(e) => handleSubmit(e)}>
           <label style={{ color: "#11153e", fontWeight: "bold" }}>
             First Name:{" "}
@@ -159,6 +160,7 @@ const EditCampusView = (props) => {
           />
           <br />
           <br />
+
 
           <Button variant="contained" color="primary" type="submit">
             Submit

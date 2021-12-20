@@ -1,62 +1,71 @@
-import { Component } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+
+import { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import NewStudentView from '../views/NewStudentView';
+import { addStudentThunk } from '../../store/thunks';
+
 
 import NewStudentView from "../views/NewStudentView";
 import { addStudentThunk } from "../../store/thunks";
 
 class NewStudentContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstname: "",
-      lastname: "",
-      email: "",
-      gpa: 0,
-      campusId: null,
-      redirect: false,
-      redirectId: null,
-    };
-  }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
+    constructor(props){
+        super(props);
+        this.state = {
+          firstname: "", 
+          lastname: "", 
+          email: "",
+          gpa: 0,
+          campusId: null, 
+          redirect: false, 
+          redirectId: null
+        };
+    }
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
+    handleChange = event => {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
 
-    let student = {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      campusId: this.state.campusId,
-      email: this.state.email,
-      gpa: this.state.gpa,
-    };
+    handleSubmit = async event => {
+        event.preventDefault();
 
-    let newStudent = await this.props.addStudent(student);
-    console.log("student id: " + newStudent.id);
+        let student = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            campusId: this.state.campusId,
+            email: this.state.email,
+            gpa: this.state.gpa
+        };
+        
+        let newStudent = await this.props.addStudent(student);
+        //console.log("student id: "+ newStudent.id)
 
-    this.setState({
-      firstname: "",
-      lastname: "",
-      campusId: null,
-      email: "",
-      gpa: 0,
-      redirect: true,
-      redirectId: newStudent.id,
-    });
-  };
 
   componentWillUnmount() {
     this.setState({ redirect: false, redirectId: null });
   }
 
-  render() {
-    if (this.state.redirect) {
-      return <Redirect to={`/student/${this.state.redirectId}`} />;
+
+    componentWillUnmount() {
+        this.setState({redirect: false, redirectId: null});
+    }
+
+    render() {
+        if(this.state.redirect) {
+          return (<Redirect to={`/student/${this.state.redirectId}`}/>)
+        }
+        return (
+          <NewStudentView 
+            handleChange = {this.handleChange} 
+            handleSubmit={this.handleSubmit}      
+          />
+        );
+
     }
     return (
       <NewStudentView
