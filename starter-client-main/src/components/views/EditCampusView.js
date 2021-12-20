@@ -84,7 +84,7 @@ const EditCampusView = (props) => {
             </Button>
           </Link>
 
-          <Link className={classes.links} to={'/campuss'} >
+          <Link className={classes.links} to={'/campuses'} >
             <Button variant="contained" color="primary">
               All Campuses
             </Button>

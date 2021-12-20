@@ -44,12 +44,16 @@ class EditStudentContainer extends Component {
             gpa: this.state.gpa,
             id: this.props.student.id
         };
-
+        console.log(this.state.campusId)
         console.log("student: ")
         console.log(student)
 
         console.log("this.props.student: ")
         console.log(this.props.student)
+
+        if (student.campusId === "") {
+          student.campusId = null;
+        }
 
         let newStudent = await this.props.editStudent(student);
 

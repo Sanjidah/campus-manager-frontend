@@ -75,9 +75,18 @@ const StudentView = (props) => {
           <button>Edit Student</button>
         </Link>
         </p>
-      <h3>{student.campus.name}</h3>
-      <h3>{student.email}</h3>
+        <div>
+      {student.campus ? (
+        <div>
+        <Link to={`/campus/` + student.campus.id}>
+        <h3>{student.campus.name}</h3></Link>
+        <h3>{student.email}</h3>
       <h3>{student.gpa}</h3>
+        </div>
+      ) : (
+        <h3>Student is currently not enrolled in a campus.</h3>
+      )}
+    </div>
     </div>
   );
 
