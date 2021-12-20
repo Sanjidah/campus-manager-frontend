@@ -32,16 +32,13 @@ const useStyles = makeStyles(theme => ({
   },
   links:{
     textDecoration: 'none',
-  },
-  image:{  
-    width: '200px',
-    height: "auto",
   }
+
 }));
 
 const StudentView = (props) => {
   const classes = useStyles();
-  const { student, deleteStudent} = props;
+  const { student } = props;
   return (
     <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
@@ -73,12 +70,10 @@ const StudentView = (props) => {
 
 
       <h1>{student.firstname + " " + student.lastname}</h1>
-      <img src={student.imageUrl} alt="Student profile" className={classes.image}/>
       <p>
         <Link to={`/editstudent/` + student.id}>
           <button>Edit Student</button>
         </Link>
-
         </p>
         <div>
       {student.campus ? (
@@ -92,7 +87,6 @@ const StudentView = (props) => {
         <h3>Student is currently not enrolled in a campus.</h3>
       )}
     </div>
-
     </div>
   );
 

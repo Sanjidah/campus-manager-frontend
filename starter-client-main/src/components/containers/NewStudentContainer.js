@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 
 import NewStudentView from '../views/NewStudentView';
 import { addStudentThunk } from '../../store/thunks';
-import { FormGroup, Input } from '@material-ui/core';
 
 
 class NewStudentContainer extends Component {
@@ -15,7 +14,6 @@ class NewStudentContainer extends Component {
           lastname: "", 
           email: "",
           gpa: 0,
-          gpaError: "",
           campusId: null, 
           redirect: false, 
           redirectId: null
@@ -23,31 +21,14 @@ class NewStudentContainer extends Component {
     }
 
     handleChange = event => {
-      event.preventDefault();
       this.setState({
-        [event.target.name]: event.target.value},() => {
-        this.validateGPA();
-    });
-      console.log(this.state);
-    }
-//Checking the GPA and console logging the error if invalid
-    validateGPA = () => {
-      const { gpa } = this.state;
-      this.setState({
-        gpaError:
-          gpa <= 4 ? null : 'GPA Must be less Than or equal to 4.0'
+        [event.target.name]: event.target.value
       });
     }
-
-    handleGPAChange = event => {
-      this.setState({ gpa: event.target.value }, () => {
-        this.validateGPA();
-      });
-    };
 
     handleSubmit = async event => {
         event.preventDefault();
-        
+
         let student = {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
@@ -55,7 +36,7 @@ class NewStudentContainer extends Component {
             email: this.state.email,
             gpa: this.state.gpa
         };
-
+        
         let newStudent = await this.props.addStudent(student);
         console.log("student id: "+newStudent.id)
 
@@ -73,20 +54,20 @@ class NewStudentContainer extends Component {
     componentWillUnmount() {
         this.setState({redirect: false, redirectId: null});
     }
+
     render() {
         if(this.state.redirect) {
           return (<Redirect to={`/student/${this.state.redirectId}`}/>)
         }
         return (
-          <NewStudentContainer
+          <NewStudentView 
             handleChange = {this.handleChange} 
-            handleSubmit={this.handleSubmit}
-            onChange={this.handleGPAChange} 
-            onBlur={this.validateGPA} 
+            handleSubmit={this.handleSubmit}      
           />
         );
     }
 }
+
 const mapDispatch = (dispatch) => {
     return({
         addStudent: (student) => dispatch(addStudentThunk(student)),
