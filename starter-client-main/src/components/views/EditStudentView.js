@@ -60,7 +60,7 @@ const useStyles = makeStyles( () => ({
 }));
 
 const EditStudentView = (props) => {
-    console.log(props)
+    // console.log(props)
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
