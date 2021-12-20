@@ -75,7 +75,7 @@ const StudentView = (props) => {
           <button>Edit Student</button>
         </Link>
         </p>
-      <h3>{student.campus.name}</h3>
+      <h3>{student.campus}</h3>
       <h3>{student.email}</h3>
       <h3>{student.gpa}</h3>
     </div>

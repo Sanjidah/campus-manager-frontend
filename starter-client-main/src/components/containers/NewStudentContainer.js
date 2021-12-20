@@ -38,7 +38,7 @@ class NewStudentContainer extends Component {
         };
         
         let newStudent = await this.props.addStudent(student);
-        console.log("student id: "+newStudent.id)
+        //console.log("student id: "+ newStudent.id)
 
         this.setState({
           firstname: "", 
