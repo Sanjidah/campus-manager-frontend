@@ -4,13 +4,9 @@ import { Redirect } from 'react-router-dom';
 
 import EditStudentView from '../views/EditStudentView';
 import { editStudentThunk } from '../../store/thunks';
-<<<<<<< HEAD
 import { fetchStudentThunk } from "../../store/thunks";
 import { editStudent } from '../../store/actions/actionCreators';
 
-=======
-import { fetchStudentThunk } from "../../store/thunks"
->>>>>>> f91b8704885e635718d5df7a437602acd90d3fd1
 
 class EditStudentContainer extends Component {
     constructor(props){
