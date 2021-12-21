@@ -16,6 +16,7 @@ class EditStudentContainer extends Component {
           lastname: this.props.student.lastname, 
           email: this.props.student.email,
           gpa: this.props.student.gpa,
+          gpaError: "",
           campusId: this.props.student.campusId, 
           redirect: false, 
           redirectId: null
@@ -29,10 +30,19 @@ class EditStudentContainer extends Component {
 
     handleChange = event => {
       this.setState({
-        [event.target.name]: event.target.value
+        [event.target.name]: event.target.value},() => {
+          this.validateGPA();
       });
+        console.log(this.state);
     }
-
+  //Checking the GPA and console logging the error if invalid
+      validateGPA = () => {
+        const { gpa } = this.state;
+        this.setState({
+          gpaError:
+            gpa <= 4 ? null : 'GPA Must be less Than or equal to 4.0'
+        });
+      }
     handleSubmit = async event => {
         event.preventDefault();
 
