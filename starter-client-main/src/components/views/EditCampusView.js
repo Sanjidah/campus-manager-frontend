@@ -99,22 +99,22 @@ const EditCampusView = (props) => {
           </Typography>
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-          <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
+          <label style= {{color:'#11153e', fontWeight: 'bold'}}>Campus Name: </label>
           <input type="text" name="name" onChange ={(e) => handleChange(e)} defaultValue={props.campus.name} required/>
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Address: </label>
           <input type="text" name="address" onChange={(e) => handleChange(e)} defaultValue={props.campus.address} required/>
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>campusId: </label>
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Description: </label>
           <input type="text" name="description" onChange={(e) => handleChange(e)} defaultValue={props.campus.description} required/>
           <br/>
           <br/>
 
-          <label style={{color:'#11153e', fontWeight: 'bold'}}>Email: </label>
+          <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Image URL: </label>
           <input type="text" name="imageUrl" onChange={(e) => handleChange(e)} defaultValue={props.campus.imageUrl} required/>
           <br/>
           <br/>
