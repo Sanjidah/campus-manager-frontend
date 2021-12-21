@@ -10,30 +10,49 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
+  campus: {
+    textAlign: "center",
+    color: "white",
+    backgroundColor: "#45A29E",
+    height: "auto",
+    width: "400px",
+    borderRadius: "40px",
+  },
+  campusButton: {
+    marginLeft: "20px",
+    marginRight: "20px",
+    marginTop: "20px",
+    backgroundColor: "#45A29E",
+    borderRadius: "40px",
+  },
   title: {
     flexGrow: 1,
-    textAlign: 'left',
-    fontType: 'bold',
-    fontFamily: 'Georgia, serif', 
-    fontSize: '35px', 
-    color: '#9ebe35'
+    textAlign: "left",
+    fontType: "bold",
+    fontFamily: "Georgia, serif",
+    fontSize: "80px",
+    color: "#66FCF1",
   },
-  appBar:{
-    backgroundColor: '#11153e',
-    shadows: ['none'],
+  appBar: {
+    backgroundColor: "#1F2833",
+    shadows: ["none"],
   },
-  greeting:{
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: '#f6f6f6',
-    fontFamily: 'Georgia, serif', 
-    width: "50%",
+  greeting: {
+    marginTop: "20px",
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "#f6f6f6",
+    fontFamily: "Georgia, serif",
+    width: "0%",
     margin: "auto",
   },
-  links:{
-    textDecoration: 'none',
-  }
-
+  links: {
+    textDecoration: "none",
+  },
+  image: {
+    width: "200px",
+    height: "auto",
+  },
 }));
 
 const StudentView = (props) => {
@@ -43,28 +62,39 @@ const StudentView = (props) => {
     <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35" >
+          <Typography variant="h6" className={classes.title} color="#9ebe35">
             Campus Manager
           </Typography>
 
-          <Link className={classes.links} to={'/'} >
-              <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-                Home
-              </Button>
-          </Link>
-
-          <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
-              All Campuses
+          <Link className={classes.links} to={"/"}>
+            <Button
+              variant="contained"
+              color="white"
+              style={{ marginRight: "10px", height: "60px", width: "200px" }}
+            >
+              Home
             </Button>
           </Link>
 
-          <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
-              All Students
+          <Link className={classes.links} to={"/campuses"}>
+            <Button
+              variant="contained"
+              color="white"
+              style={{ marginRight: "10px", height: "60px", width: "200px" }}
+            >
+              Campuses
             </Button>
           </Link>
 
+          <Link className={classes.links} to={"/students"}>
+            <Button
+              variant="contained"
+              color="white"
+              style={{ marginRight: "10px", height: "60px", width: "200px" }}
+            >
+              Students
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
 
@@ -81,7 +111,7 @@ const StudentView = (props) => {
         <Link to={`/campus/` + student.campus.id}>
         <h3>{student.campus.name}</h3></Link>
         <h3>{student.email}</h3>
-      <h3>{student.gpa}</h3>
+      <h3>GPA: {student.gpa}</h3>
         </div>
       ) : (
         <h3>Student is currently not enrolled in a campus.</h3>
