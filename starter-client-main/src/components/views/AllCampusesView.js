@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AllCampusesView = (props) => {
-  const { campuses, deleteCampus } = props;
+  const { deleteCampus } = props;
   const classes = useStyles();
   if (!props.allCampuses.length) {
     return (

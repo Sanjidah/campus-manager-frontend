@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 import NewStudentView from '../views/NewStudentView';
 import { addStudentThunk } from '../../store/thunks';
-
+//import { FormGroup, Input } from '@material-ui/core';
 
 class NewStudentContainer extends Component {
     constructor(props){
@@ -14,6 +14,7 @@ class NewStudentContainer extends Component {
           lastname: "", 
           email: "",
           gpa: 0,
+          gpaError: "",
           campusId: null, 
           redirect: false, 
           redirectId: null
@@ -22,10 +23,20 @@ class NewStudentContainer extends Component {
 
     handleChange = event => {
       this.setState({
-        [event.target.name]: event.target.value
+        [event.target.name]: event.target.value},() => {
+          this.validateGPA();
       });
-    }
-
+        console.log(this.state);
+      }
+  //Checking the GPA and console logging the error if invalid
+      validateGPA = () => {
+        const { gpa } = this.state;
+        this.setState({
+          gpaError:
+            gpa <= 4 ? null : 'GPA Must be less Than or equal to 4.0'
+        });
+      }
+  
     handleSubmit = async event => {
         event.preventDefault();
 
