@@ -98,25 +98,32 @@ const StudentView = (props) => {
         </Toolbar>
       </AppBar>
 
+      <button className={classes.campusButton}>
+        <div className={classes.campus}>
+          <h1>{student.firstname + " " + student.lastname}</h1>
+          <p>
+            <Link to={`/editstudent/` + student.id}>
+              <button>Edit Student</button>
+            </Link>
+          </p>
+            <div>
+            {student.campus ? (
+              <div>
+                <Link to={`/campus/` + student.campus.id}>
+                <h3>{student.campus.name}</h3></Link>
+                <img src={student.imageUrl}
+                    alt="Student profile"
+                    className={classes.image}/>
+                <h3>{student.email}</h3>
+                <h3>GPA: {student.gpa}</h3>
+              </div>
+            ) : (
+              <h3>Student is currently not enrolled in a campus.</h3>
+            )}
+            </div>
+         </div>
+       </button>
 
-      <h1>{student.firstname + " " + student.lastname}</h1>
-      <p>
-        <Link to={`/editstudent/` + student.id}>
-          <button>Edit Student</button>
-        </Link>
-        </p>
-        <div>
-      {student.campus ? (
-        <div>
-        <Link to={`/campus/` + student.campus.id}>
-        <h3>{student.campus.name}</h3></Link>
-        <h3>{student.email}</h3>
-      <h3>GPA: {student.gpa}</h3>
-        </div>
-      ) : (
-        <h3>Student is currently not enrolled in a campus.</h3>
-      )}
-    </div>
     </div>
   );
 

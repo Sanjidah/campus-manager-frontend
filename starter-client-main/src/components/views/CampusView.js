@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  order: {
+    marginRight: "40px",
+
+
+  },
   campus: {
     textAlign: "center",
     color: "white",
@@ -102,29 +107,35 @@ const CampusView = (props) => {
             </Link>
           </Toolbar>
         </AppBar>
-        <h1>{campus.name}</h1>
-        <p>
-          <Link to={`/editcampus/` + campus.id}>
-            <button>Edit Campus</button>
-          </Link>
-        </p>
-        <p>
-          <Link to={`/campuses`}>
-            <button onClick={() => deleteCampus(campus.id)}>
-              Delete Campus
-            </button>
-          </Link>
-        </p>
-        <img src={campus.imageUrl} alt="Campus" className={classes.image} />
-        <p>{campus.description}</p>
-        <p>{campus.address}</p>
-        <p>There are no students who attend this campus.</p>
-        <p>
-          {" "}
-          <Link to={`/newstudent/`}>
-            <button>Add Student</button>
-          </Link>
-        </p>
+
+        <button className={classes.campusButton}>
+          <div className={classes.campus}>
+            <h1>{campus.name}</h1>
+            <p>
+              <Link to={`/editcampus/` + campus.id}>
+                <button>Edit Campus</button>
+              </Link>
+            </p>
+            <p>
+              <Link to={`/campuses`}>
+                <button onClick={() => deleteCampus(campus.id)}>
+                  Delete Campus
+                </button>
+              </Link>
+            </p>
+            <img src={campus.imageUrl} alt="Campus" className={classes.image} />
+            <p>{campus.description}</p>
+            <p>{campus.address}</p>
+            <p>There are no students who attend this campus.</p>
+            <p>
+              {" "}
+              <Link to={`/newstudent/`}>
+                <button>Add Student</button>
+              </Link>
+            </p>
+          </div>
+        </button>
+      
       </div>
     );
   }
@@ -132,81 +143,88 @@ const CampusView = (props) => {
   return (
     <div>
       <AppBar position="static" elevation={0} className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" className={classes.title} color="#9ebe35">
-            Campus Manager
-          </Typography>
+          <Toolbar>
+            <Typography variant="h6" className={classes.title} color="#9ebe35">
+              Campus Manager
+            </Typography>
 
-          <Link className={classes.links} to={"/"}>
-            <Button
-              variant="contained"
-              color="white"
-              style={{ marginRight: "10px", height: "60px", width: "200px" }}
-            >
-              Home
-            </Button>
-          </Link>
+            <Link className={classes.links} to={"/"}>
+              <Button
+                variant="contained"
+                color="white"
+                style={{ marginRight: "10px", height: "60px", width: "200px" }}
+              >
+                Home
+              </Button>
+            </Link>
 
-          <Link className={classes.links} to={"/campuses"}>
-            <Button
-              variant="contained"
-              color="white"
-              style={{ marginRight: "10px", height: "60px", width: "200px" }}
-            >
-              All Campuses
-            </Button>
-          </Link>
+            <Link className={classes.links} to={"/campuses"}>
+              <Button
+                variant="contained"
+                color="white"
+                style={{ marginRight: "10px", height: "60px", width: "200px" }}
+              >
+                All Campuses
+              </Button>
+            </Link>
 
-          <Link className={classes.links} to={"/students"}>
-            <Button
-              variant="contained"
-              color="white"
-              style={{ marginRight: "10px", height: "60px", width: "200px" }}
-            >
-              All Students
-            </Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
+            <Link className={classes.links} to={"/students"}>
+              <Button
+                variant="contained"
+                color="white"
+                style={{ marginRight: "10px", height: "60px", width: "200px" }}
+              >
+                All Students
+              </Button>
+            </Link>
+          </Toolbar>
+        </AppBar>
 
-      <h1>{campus.name}</h1>
-      <p>
-        <Link to={`/editcampus/` + campus.id}>
-          <button>Edit Campus</button>
-        </Link>
-      </p>
-      <p>
-        <Link to={`/campuses`}>
-          <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
-        </Link>
-      </p>
-      <img src={campus.imageUrl} alt="Campus" className={classes.image} />
-      <p>{campus.description}</p>
-      <p>{campus.address}</p>
-      <ul>
-        {campus.students.map((student) => {
-          let name = student.firstname + " " + student.lastname;
-          return (
-            <li key={student.id}>
-              <Link to={`/student/${student.id}`}>{name}</Link>
-              <p>
-                {/* <Link to={`/campus/${campus.id}`}> */}
-                <Link to={`/campuses`}>
-                  <button onClick={() => deleteStudent(student.id)}>
-                    Delete Student
-                  </button>
-                </Link>
-              </p>
-            </li>
-          );
-        })}
-      </ul>
-      <p>
-        <Link to={`/newstudent/`}>
-          <button>Add Student</button>
-        </Link>
-      </p>
+      <button className={classes.campusButton}>
+        <div className={classes.campus}>
+          <h1>{campus.name}</h1>
+          <p>
+            <Link to={`/editcampus/` + campus.id}>
+              <button>Edit Campus</button>
+            </Link>
+          </p>
+          <p>
+            <Link to={`/campuses`}>
+              <button onClick={() => deleteCampus(campus.id)}>Delete Campus</button>
+            </Link>
+          </p>
+          <img src={campus.imageUrl} alt="Campus" className={classes.image} />
+          <p>{campus.description}</p>
+          <p>{campus.address}</p>
+          <ul>
+            {campus.students.map((student) => {
+              let name = student.firstname + " " + student.lastname;
+              return (
+                <div className={classes.order}>
+                <div key={student.id}>
+                  <Link to={`/student/${student.id}`}>{name}</Link>
+                  <p>
+                    <Link to={`/campuses`}>
+                      <button onClick={() => deleteStudent(student.id)}>
+                        Delete Student
+                      </button>
+                    </Link>
+                  </p>
+                </div>
+                </div>
+              );
+            })}
+          </ul>
+          <p>
+            <Link to={`/newstudent/`}>
+              <button>Add Student</button>
+            </Link>
+          </p>
+        </div>
+      </button>
+
     </div>
+
   );
 };
 
