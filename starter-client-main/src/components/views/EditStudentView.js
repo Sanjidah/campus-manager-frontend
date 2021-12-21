@@ -124,6 +124,7 @@ const EditStudentView = (props) => {
             name="firstname"
             onChange={(e) => handleChange(e)}
             defaultValue={props.student.firstname}
+            required
           />
           <br />
           <br />
@@ -136,6 +137,7 @@ const EditStudentView = (props) => {
             name="lastname"
             onChange={(e) => handleChange(e)}
             defaultValue={props.student.lastname}
+            required
           />
           <br />
           <br />
@@ -160,6 +162,7 @@ const EditStudentView = (props) => {
             name="email"
             onChange={(e) => handleChange(e)}
             defaultValue={props.student.email}
+            required
           />
           <br />
           <br />
@@ -170,6 +173,7 @@ const EditStudentView = (props) => {
             name="gpa"
             onChange={(e) => handleChange(e)}
             defaultValue={props.student.gpa}
+            required
           />
           <br />
           <br />
