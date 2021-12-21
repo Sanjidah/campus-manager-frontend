@@ -11,24 +11,43 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  campus: {
+    textAlign: "center",
+    color: "white",
+    backgroundColor: "#45A29E",
+    height: "auto",
+    width: "400px",
+    borderRadius: "40px",
+  },
+  createButton: {
+    backgroundColor: "pink",
+  },
+  campusButton: {
+    marginLeft: "20px",
+    marginRight: "20px",
+    marginTop: "20px",
+    backgroundColor: "#45A29E",
+    borderRadius: "40px",
+  },
   title: {
     flexGrow: 1,
     textAlign: "left",
     fontType: "bold",
     fontFamily: "Georgia, serif",
-    fontSize: "35px",
-    color: "#9ebe35",
+    fontSize: "80px",
+    color: "#66FCF1",
   },
   appBar: {
-    backgroundColor: "#11153e",
+    backgroundColor: "#1F2833",
     shadows: ["none"],
   },
   greeting: {
+    marginTop: "20px",
     display: "flex",
     justifyContent: "center",
     backgroundColor: "#f6f6f6",
     fontFamily: "Georgia, serif",
-    width: "50%",
+    width: "0%",
     margin: "auto",
   },
   links: {
@@ -55,8 +74,8 @@ const AllCampusesView = (props) => {
             <Link className={classes.links} to={"/"}>
               <Button
                 variant="contained"
-                color="primary"
-                style={{ marginRight: "10px" }}
+                color="white"
+                style={{ marginRight: "10px", height: "60px", width: "200px" }}
               >
                 Home
               </Button>
@@ -65,15 +84,19 @@ const AllCampusesView = (props) => {
             <Link className={classes.links} to={"/campuses"}>
               <Button
                 variant="contained"
-                color="primary"
-                style={{ marginRight: "10px" }}
+                color="white"
+                style={{ marginRight: "10px", height: "60px", width: "200px" }}
               >
                 All Campuses
               </Button>
             </Link>
 
             <Link className={classes.links} to={"/students"}>
-              <Button variant="contained" color="primary">
+              <Button
+                variant="contained"
+                color="white"
+                style={{ marginRight: "10px", height: "60px", width: "200px" }}
+              >
                 All Students
               </Button>
             </Link>
@@ -82,7 +105,13 @@ const AllCampusesView = (props) => {
 
         <p>There are no campuses.</p>
         <Link to={`/newcampus`}>
-          <button>Add New Campus</button>
+          <Button
+            variant="contained"
+            color="white"
+            style={{ marginRight: "10px", height: "60px", width: "200px" }}
+          >
+            <button>Add New Campus</button>
+          </Button>
         </Link>
       </div>
     );
@@ -99,8 +128,8 @@ const AllCampusesView = (props) => {
           <Link className={classes.links} to={"/"}>
             <Button
               variant="contained"
-              color="primary"
-              style={{ marginRight: "10px" }}
+              color="white"
+              style={{ marginRight: "10px", height: "60px", width: "200px" }}
             >
               Home
             </Button>
@@ -109,36 +138,54 @@ const AllCampusesView = (props) => {
           <Link className={classes.links} to={"/campuses"}>
             <Button
               variant="contained"
-              color="primary"
-              style={{ marginRight: "10px" }}
+              ccolor="white"
+              style={{ marginRight: "10px", height: "60px", width: "200px" }}
             >
               Campuses
             </Button>
           </Link>
 
           <Link className={classes.links} to={"/students"}>
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="white"
+              style={{ marginRight: "10px", height: "60px", width: "200px" }}
+            >
               Students
             </Button>
           </Link>
         </Toolbar>
       </AppBar>
+      <div className={classes.greeting}>
+        <Link className={classes.links} to={"/newcampus"}>
+          <Button
+            variant="contained"
+            color="white"
+            style={{ marginRight: "10px", height: "60px", width: "200px" }}
+          >
+            Add new Campus!
+          </Button>
+        </Link>
+      </div>
 
       {props.allCampuses.map((campus) => (
-        <div key={campus.id}>
-          <Link to={`/campus/${campus.id}`}>
-            <h1>{campus.name}</h1>
-          </Link>
-          <img src={campus.imageUrl} alt="Campus" className={classes.image} />
-          <p>{campus.description}</p>
-          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
-        </div>
+        <button className={classes.campusButton}>
+          <div className={classes.campus}>
+            <div key={campus.id}>
+              <Link to={`/campus/${campus.id}`}>
+                <h1>{campus.name}</h1>
+              </Link>
+              <img
+                src={campus.imageUrl}
+                alt="Campus"
+                className={classes.image}
+              />
+              <p>{campus.description}</p>
+              <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+            </div>
+          </div>
+        </button>
       ))}
-      <p>
-        <Link to={`/newcampus`}>
-          <button>Add New Campus</button>
-        </Link>
-      </p>
     </div>
   );
 };
